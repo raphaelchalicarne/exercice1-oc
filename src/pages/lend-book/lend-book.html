@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>{{ book.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card [ngClass]="{'is-lended': book.isLended, 'is-not-lended': !book.isLended}">
+    <ion-card-header>{{ book.name }}</ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let line of book.description">{{ line }}</p>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button
+                  full
+                  color="secondary-dark"
+                  [disabled]="!book.isLended"(click)="onToggleBook()">Prêter</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button
+                  full
+                  color="secondary-light"
+                  [disabled]="book.isLended"(click)="onToggleBook()">Récupérer</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

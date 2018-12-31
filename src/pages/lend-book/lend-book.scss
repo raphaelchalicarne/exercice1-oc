@@ -1,0 +1,12 @@
+page-lend-book {
+    .is-lended {
+        ion-card-content, ion-card-header, ion-grid {
+            background-color: color($colors, background-light);
+        }
+    }
+    .is-not-lended {
+        ion-card-content, ion-card-header, ion-grid {
+            background-color: color($colors, background-dark);
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>{{ cd.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card [ngClass]="{'is-lended': cd.isLended, 'is-not-lended': !cd.isLended}">
+    <ion-card-header>{{ cd.name }}</ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let line of cd.description">{{ line }}</p>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button
+                  full
+                  color="secondary-dark"
+                  [disabled]="!cd.isLended"(click)="onToggleCd()">Prêter</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button
+                  full
+                  color="secondary-light"
+                  [disabled]="cd.isLended"(click)="onToggleCd()">Récupérer</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
